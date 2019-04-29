@@ -47,25 +47,29 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
 
   const defaultBorderStyles: React.CSSProperties = { borderWidth, borderRadius }
 
-  return isFromKeyboard
-    ? {
-        ':focus': {
-          borderColor: 'transparent',
+  return {
+    ':focus': {
+      outline: 0,
 
-          ':before': getPseudoElementStyles({
-            borderEdgeValue: '0',
-            borderColor: focusInnerBorderColor,
-            ...defaultBorderStyles,
-          }),
+      ...(isFromKeyboard
+        ? {
+            borderColor: 'transparent',
 
-          ':after': getPseudoElementStyles({
-            borderEdgeValue: `-${borderWidth}`,
-            borderColor: focusOuterBorderColor,
-            ...defaultBorderStyles,
-          }),
-        },
-      }
-    : {}
+            ':before': getPseudoElementStyles({
+              borderEdgeValue: '0',
+              borderColor: focusInnerBorderColor,
+              ...defaultBorderStyles,
+            }),
+
+            ':after': getPseudoElementStyles({
+              borderEdgeValue: `-${borderWidth}`,
+              borderColor: focusOuterBorderColor,
+              ...defaultBorderStyles,
+            }),
+          }
+        : {}),
+    },
+  }
 }
 
 export default getBorderFocusStyles

@@ -8,7 +8,7 @@ import {
 import { AlertProps } from '../../../../components/Alert/Alert'
 import { AlertVariables } from './alertVariables'
 import { teamsIconClassNames } from '../Icon/svg'
-import { pxToRem } from '../../../../lib'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
 
 const getIntentColorsFromProps = (
   p: AlertProps,
@@ -101,7 +101,7 @@ const alertStyles: ComponentSlotStylesInput<AlertProps, AlertVariables> = {
     flexGrow: 1,
   }),
 
-  action: ({ variables: v, props: p }): ICSSInJSStyle => ({
+  action: ({ variables: v, props: p, theme: { siteVariables } }): ICSSInJSStyle => ({
     height: v.actionSize,
     minWidth: v.actionSize,
     color: v.actionColor || 'currentColor',
@@ -115,8 +115,6 @@ const alertStyles: ComponentSlotStylesInput<AlertProps, AlertVariables> = {
     [`& .${teamsIconClassNames.outline}`]: {
       display: 'block',
     },
-
-    ':focus': { outline: 0 },
 
     ':hover': {
       color: 'currentColor',
@@ -132,8 +130,6 @@ const alertStyles: ComponentSlotStylesInput<AlertProps, AlertVariables> = {
 
     ...(p.isFromKeyboard && {
       ':focus': {
-        outline: 0,
-
         [`& .${teamsIconClassNames.filled}`]: {
           display: 'block',
         },
@@ -142,27 +138,7 @@ const alertStyles: ComponentSlotStylesInput<AlertProps, AlertVariables> = {
           display: 'none',
         },
 
-        ':before': {
-          content: '""',
-          position: 'absolute',
-          top: '1px',
-          right: '1px',
-          bottom: '1px',
-          left: '1px',
-          border: `1px solid ${v.focusInnerBorderColor}`,
-          borderRadius: pxToRem(2),
-        },
-
-        ':after': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          border: `1px solid ${v.focusOuterBorderColor}`,
-          borderRadius: pxToRem(2),
-        },
+        ...getBorderFocusStyles({ siteVariables, isFromKeyboard: true })[':focus'],
       },
     }),
   }),

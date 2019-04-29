@@ -36,7 +36,6 @@ const radioStyles: ComponentSlotStylesInput<
     display: p.vertical ? 'flex' : 'inline-flex',
     fontSize: v.textFontSize,
     padding: v.padding,
-    outline: 0,
 
     ':hover': {
       color: v.textColorDefaultHoverFocus,

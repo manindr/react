@@ -23,7 +23,6 @@ const attachmentStyles: ComponentSlotStylesInput<AttachmentProps, AttachmentVari
     border: `${siteVariables.borderWidth} solid ${v.borderColor}`,
     borderRadius: v.borderRadius,
 
-    outline: 0,
     ...getBorderFocusStyles({
       siteVariables,
       isFromKeyboard: p.isFromKeyboard,
@@ -70,7 +69,6 @@ const attachmentStyles: ComponentSlotStylesInput<AttachmentProps, AttachmentVari
       color: v.textColor, // this breaks the color change on hover
     },
 
-    outline: 0,
     ...getBorderFocusStyles({
       siteVariables,
       isFromKeyboard: p.isFromKeyboard,
