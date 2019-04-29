@@ -13,6 +13,7 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
       height,
       minWidth,
       maxWidth,
+      borderRadius,
       circularBorderRadius,
       paddingLeftRightValue,
 
@@ -21,6 +22,7 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
       colorFocus,
       colorDisabled,
       backgroundColor,
+      backgroundColorActive,
       backgroundColorHover,
       backgroundColorFocus,
       backgroundColorDisabled,
@@ -32,6 +34,7 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
       primaryColorHover,
       primaryColorFocus,
       primaryBackgroundColor,
+      primaryBackgroundColorActive,
       primaryBackgroundColorHover,
       primaryBackgroundColorFocus,
       primaryBorderColor,
@@ -39,6 +42,7 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
       circularColor,
       circularColorActive,
       circularBackgroundColor,
+      circularBackgroundColorActive,
       circularBackgroundColorHover,
       circularBackgroundColorFocus,
       circularBorderColor,
@@ -52,7 +56,7 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
       boxShadow,
     } = variables
 
-    const { ':focus': borderFocusStyles, ...borderRootStyles } = getBorderFocusStyles({
+    const { ':focus': borderFocusStyles } = getBorderFocusStyles({
       siteVariables,
       isFromKeyboard,
       ...(circular && {
@@ -67,6 +71,7 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
       maxWidth,
       color,
       backgroundColor,
+      borderRadius,
       display: 'inline-flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -82,7 +87,6 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
         borderStyle: 'solid',
         borderColor,
         boxShadow,
-        ...borderRootStyles,
 
         ':hover': {
           color: colorHover,
@@ -90,14 +94,19 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
           borderColor: borderColorHover,
         },
 
-        ...(isFromKeyboard && {
-          ':focus': {
-            color: colorFocus,
-            backgroundColor: backgroundColorFocus,
-            boxShadow: 'none',
-            ...borderFocusStyles,
-          },
-        }),
+        ':focus': isFromKeyboard
+          ? {
+              color: colorFocus,
+              backgroundColor: backgroundColorFocus,
+              boxShadow: 'none',
+              ...borderFocusStyles,
+            }
+          : {
+              ':active': {
+                backgroundColor: backgroundColorActive,
+                boxShadow: 'none',
+              },
+            },
       }),
 
       // circular button defaults
@@ -108,20 +117,26 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
           color: circularColor,
           backgroundColor: circularBackgroundColor,
           borderColor: circularBorderColor,
-          ...borderRootStyles,
+          borderRadius: circularBorderRadius,
 
           ':hover': {
             color: circularColorActive,
             backgroundColor: circularBackgroundColorHover,
             borderColor: circularBorderColorHover,
           },
-          ...(isFromKeyboard && {
-            ':focus': {
-              color: circularColorActive,
-              backgroundColor: circularBackgroundColorFocus,
-              ...borderFocusStyles,
-            },
-          }),
+
+          ':focus': isFromKeyboard
+            ? {
+                color: circularColorActive,
+                backgroundColor: circularBackgroundColorFocus,
+                ...borderFocusStyles,
+              }
+            : {
+                ':active': {
+                  backgroundColor: circularBackgroundColorActive,
+                  boxShadow: 'none',
+                },
+              },
         }),
 
       // text button defaults
@@ -146,20 +161,24 @@ const buttonStyles: ComponentSlotStylesInput<ButtonProps & ButtonState, ButtonVa
           color: primaryColor,
           backgroundColor: primaryBackgroundColor,
           borderColor: primaryBorderColor,
-          ...borderRootStyles,
 
           ':hover': {
             color: primaryColorHover,
             backgroundColor: primaryBackgroundColorHover,
           },
 
-          ...(isFromKeyboard && {
-            ':focus': {
-              color: primaryColorFocus,
-              backgroundColor: primaryBackgroundColorFocus,
-              ...borderFocusStyles,
-            },
-          }),
+          ':focus': isFromKeyboard
+            ? {
+                color: primaryColorFocus,
+                backgroundColor: primaryBackgroundColorFocus,
+                ...borderFocusStyles,
+              }
+            : {
+                ':active': {
+                  backgroundColor: primaryBackgroundColorActive,
+                  boxShadow: 'none',
+                },
+              },
         }),
 
       // Overrides for "disabled" buttons

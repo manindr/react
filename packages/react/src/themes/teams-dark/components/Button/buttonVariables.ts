@@ -6,11 +6,13 @@ export default (siteVars: any): Partial<ButtonVariables> => {
     colorHover: siteVars.colors.white,
     colorFocus: siteVars.colors.white,
     backgroundColor: 'transparent',
+    primaryBackgroundColorActive: siteVars.brand08,
 
     primaryBackgroundColorHover: siteVars.brand08,
     primaryBackgroundColorFocus: siteVars.brand14,
 
     circularColorActive: siteVars.black,
+    circularBackgroundColorActive: siteVars.gray02,
     circularBackgroundColorHover: siteVars.gray03,
     circularBackgroundColorFocus: siteVars.gray02,
   }

@@ -6,6 +6,7 @@ export interface ButtonVariables {
   height: string
   minWidth: string
   maxWidth: string
+  borderRadius: string
   paddingLeftRightValue: number
   contentFontWeight: FontWeightProperty
 
@@ -14,6 +15,7 @@ export interface ButtonVariables {
   colorFocus: string
   colorDisabled: string
   backgroundColor: string
+  backgroundColorActive: string
   backgroundColorHover: string
   backgroundColorFocus: string
   backgroundColorDisabled: string
@@ -25,6 +27,7 @@ export interface ButtonVariables {
   primaryColorHover: string
   primaryColorFocus: string
   primaryBackgroundColor: string
+  primaryBackgroundColorActive: string
   primaryBackgroundColorHover: string
   primaryBackgroundColorFocus: string
   primaryBorderColor: string
@@ -33,6 +36,7 @@ export interface ButtonVariables {
   circularColor: string
   circularColorActive: string
   circularBackgroundColor: string
+  circularBackgroundColorActive: string
   circularBackgroundColorHover: string
   circularBackgroundColorFocus: string
   circularBorderColor: string
@@ -54,6 +58,7 @@ export default (siteVars: any): ButtonVariables => {
     height: pxToRem(32),
     minWidth: pxToRem(96),
     maxWidth: pxToRem(280),
+    borderRadius: siteVars.borderRadius,
     contentFontWeight: siteVars.fontWeightSemibold,
     paddingLeftRightValue: 20,
 
@@ -62,6 +67,7 @@ export default (siteVars: any): ButtonVariables => {
     colorFocus: siteVars.colors.grey[900],
     colorDisabled: siteVars.gray06,
     backgroundColor: siteVars.colors.white,
+    backgroundColorActive: siteVars.gray08,
     backgroundColorHover: siteVars.gray14,
     backgroundColorFocus: siteVars.gray08,
     backgroundColorDisabled: siteVars.gray09,
@@ -73,6 +79,7 @@ export default (siteVars: any): ButtonVariables => {
     primaryColorHover: siteVars.colors.white,
     primaryColorFocus: siteVars.colors.white,
     primaryBackgroundColor: siteVars.colors.primary[500],
+    primaryBackgroundColorActive: siteVars.colors.primary[900],
     primaryBackgroundColorHover: siteVars.brand04,
     primaryBackgroundColorFocus: siteVars.brand04,
     primaryBorderColor: 'transparent',
@@ -81,6 +88,7 @@ export default (siteVars: any): ButtonVariables => {
     circularColor: siteVars.gray02,
     circularColorActive: siteVars.colors.white,
     circularBackgroundColor: 'transparent',
+    circularBackgroundColorActive: siteVars.gray02,
     circularBackgroundColorHover: siteVars.gray03,
     circularBackgroundColorFocus: siteVars.gray03,
     circularBorderColor: siteVars.gray02,

@@ -21,6 +21,7 @@ const attachmentStyles: ComponentSlotStylesInput<AttachmentProps, AttachmentVari
     color: v.textColor,
     boxShadow: v.boxShadow,
     border: `${siteVariables.borderWidth} solid ${v.borderColor}`,
+    borderRadius: v.borderRadius,
 
     outline: 0,
     ...getBorderFocusStyles({
