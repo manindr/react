@@ -31,8 +31,7 @@ export const unknownStatusTextColor = black
 //
 // BORDER STYLES
 //
-export const focusInnerBorderColor = colors.black
-export const focusOuterBorderColor = colors.white
+export const focusInnerBorderColor = accessibleCyan
 
 //
 // SEMANTIC ASSIGNMENTS
